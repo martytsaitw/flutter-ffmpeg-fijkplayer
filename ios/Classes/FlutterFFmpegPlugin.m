@@ -17,16 +17,14 @@
  * along with FlutterFFmpeg.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#import "EmptyLogDelegate.h"
-#import "FlutterExecuteDelegate.h"
 #import "FlutterFFmpegPlugin.h"
 
-#import <stdlib.h>
-#import <mobileffmpeg/ArchDetect.h>
-#import <mobileffmpeg/MobileFFmpegConfig.h>
-#import <mobileffmpeg/MobileFFmpeg.h>
-#import <mobileffmpeg/MobileFFprobe.h>
+#import "EmptyLogDelegate.h"
+#import "FlutterExecuteDelegate.h"
 
+#import <stdlib.h>
+
+int ffmpeg_execute(int argc, char **argv);
 static NSString *const PLATFORM_NAME = @"ios";
 
 static NSString *const KEY_VERSION = @"version";
@@ -57,18 +55,39 @@ static NSString *const KEY_EXECUTION_COMMAND = @"command";
 static NSString *const EVENT_LOG = @"FlutterFFmpegLogCallback";
 static NSString *const EVENT_STAT = @"FlutterFFmpegStatisticsCallback";
 
+volatile int handleSIGQUIT;
+volatile int handleSIGINT;
+volatile int handleSIGTERM;
+volatile int handleSIGXCPU;
+volatile int handleSIGPIPE;
+
+void mobileffmpeg_log_callback_function(void *ptr, int level, const char* format, va_list vargs)
+{
+
+}
+
+int cancelRequested(long executionId)
+{
+    return 0;
+}
+
+void removeExecution(long executionId)
+{
+
+}
+
 /**
  * Flutter FFmpeg Plugin
  */
 @implementation FlutterFFmpegPlugin {
     FlutterEventSink _eventSink;
-    EmptyLogDelegate *_emptyLogDelegate;
+    //EmptyLogDelegate *_emptyLogDelegate;
 }
 
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _emptyLogDelegate = [[EmptyLogDelegate alloc] init];
+        //_emptyLogDelegate = [[EmptyLogDelegate alloc] init];
     }
 
     return self;
@@ -101,44 +120,57 @@ static NSString *const EVENT_STAT = @"FlutterFFmpegStatisticsCallback";
 
     if ([@"getPlatform" isEqualToString:call.method]) {
 
-        NSString *architecture = [ArchDetect getArch];
-        result([FlutterFFmpegPlugin toStringDictionary:KEY_PLATFORM :[NSString stringWithFormat:@"%@-%@", PLATFORM_NAME, architecture]]);
+        //NSString *architecture = [ArchDetect getArch];
+        //result([FlutterFFmpegPlugin toStringDictionary:KEY_PLATFORM :[NSString stringWithFormat:@"%@-%@", PLATFORM_NAME, architecture]]);
 
     } else if ([@"getFFmpegVersion" isEqualToString:call.method]) {
 
-        result([FlutterFFmpegPlugin toStringDictionary:KEY_VERSION :[MobileFFmpegConfig getFFmpegVersion]]);
+        //result([FlutterFFmpegPlugin toStringDictionary:KEY_VERSION :[MobileFFmpegConfig getFFmpegVersion]]);
 
     } else if ([@"executeFFmpegWithArguments" isEqualToString:call.method]) {
 
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            int rc = [MobileFFmpeg executeWithArguments:arguments];
+            char **argv = (char**)malloc(sizeof(char*) * ([arguments count] + 1));
+            char *pName = (char*)malloc(sizeof(char) * 64);
+            strcpy(pName, "runffmpeg");
+
+            argv[0] = pName;
+            for(int i = 0; i < [arguments count]; i++) {
+                NSString *argument = [arguments objectAtIndex: i];
+                argv[i + 1] = (char *)[argument UTF8String];
+            }
+            int rc = ffmpeg_execute([arguments count] + 1, argv);
             result([FlutterFFmpegPlugin toIntDictionary:KEY_RC :[NSNumber numberWithInt:rc]]);
+
+            free(pName);
+            free(argv);
         });
 
     } else if ([@"executeFFmpegAsyncWithArguments" isEqualToString:call.method]) {
 
-        FlutterExecuteDelegate* executeDelegate = [[FlutterExecuteDelegate alloc] initWithEventSink:_eventSink];
+        /*FlutterExecuteDelegate* executeDelegate = [[FlutterExecuteDelegate alloc] initWithEventSink:_eventSink];
         long executionId = [MobileFFmpeg executeWithArgumentsAsync:arguments withCallback:executeDelegate];
 
         result([FlutterFFmpegPlugin toIntDictionary:KEY_EXECUTION_ID :[NSNumber numberWithLong:executionId]]);
-
+*/
     } else if ([@"executeFFprobeWithArguments" isEqualToString:call.method]) {
 
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        /*dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             int rc = [MobileFFprobe executeWithArguments:arguments];
             result([FlutterFFmpegPlugin toIntDictionary:KEY_RC :[NSNumber numberWithInt:rc]]);
         });
-
+*/
     } else if ([@"cancel" isEqualToString:call.method]) {
-
+/*
         NSNumber* executionId = call.arguments[@"executionId"];
         if (executionId == nil) {
             [MobileFFmpeg cancel];
         } else {
             [MobileFFmpeg cancel:[executionId longValue]];
         }
-
-    } else if ([@"enableRedirection" isEqualToString:call.method]) {
+*/
+    } 
+    /*else if ([@"enableRedirection" isEqualToString:call.method]) {
 
         [MobileFFmpegConfig enableRedirection];
 
@@ -238,13 +270,14 @@ static NSString *const EVENT_STAT = @"FlutterFFmpegStatisticsCallback";
         NSArray* executionsArray = [FlutterFFmpegPlugin toExecutionsArray:[MobileFFmpeg listExecutions]];
         result(executionsArray);
 
-    } else {
+    }*/ else {
 
         result(FlutterMethodNotImplemented);
 
     }
 }
 
+/*
 - (void)logCallback: (long)executionId :(int)level :(NSString*)message {
     dispatch_async(dispatch_get_main_queue(), ^{
         NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
@@ -270,7 +303,7 @@ static NSString *const EVENT_STAT = @"FlutterFFmpegStatisticsCallback";
     NSDictionary *dictionary = [FlutterFFmpegPlugin toStatisticsDictionary:statistics];
     _eventSink([FlutterFFmpegPlugin toStringDictionary:EVENT_STAT withDictionary:dictionary]);
 }
-
+*/
 + (NSDictionary *)toStringDictionary:(NSString*)key :(NSString*)value {
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
     dictionary[key] = value;
@@ -292,6 +325,7 @@ static NSString *const EVENT_STAT = @"FlutterFFmpegStatisticsCallback";
     return dictionary;
 }
 
+/*
 + (NSDictionary *)toStatisticsDictionary:(Statistics*)statistics {
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
 
@@ -343,5 +377,5 @@ static NSString *const EVENT_STAT = @"FlutterFFmpegStatisticsCallback";
 
     return dictionary;
 }
-
+*/
 @end

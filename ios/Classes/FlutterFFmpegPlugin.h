@@ -18,10 +18,9 @@
  */
 
 #import <Flutter/Flutter.h>
-#import <mobileffmpeg/MobileFFmpegConfig.h>
 
 /**
  * Flutter FFmpeg Plugin
  */
-@interface FlutterFFmpegPlugin : NSObject<FlutterPlugin,FlutterStreamHandler,LogDelegate,StatisticsDelegate>
+@interface FlutterFFmpegPlugin : NSObject<FlutterPlugin,FlutterStreamHandler>
 @end

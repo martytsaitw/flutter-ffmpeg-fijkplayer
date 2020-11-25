@@ -17,6 +17,7 @@
  * along with FlutterFFmpeg.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#if 0
 #import "FlutterExecuteDelegate.h"
 
 static NSString *const EVENT_EXECUTE = @"FlutterFFmpegExecuteCallback";
@@ -49,3 +50,4 @@ static NSString *const EVENT_EXECUTE = @"FlutterFFmpegExecuteCallback";
 }
 
 @end
+#endif
