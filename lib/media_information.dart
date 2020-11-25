@@ -17,7 +17,7 @@
  * along with FlutterFFmpeg.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import 'package:flutter_ffmpeg/stream_information.dart';
+import 'package:flutter_ffmpeg_fijkplayer/stream_information.dart';
 
 class MediaInformation {
   Map<dynamic, dynamic> _allProperties;

@@ -20,10 +20,10 @@
 import 'dart:async';
 
 import 'package:flutter/services.dart';
-import 'package:flutter_ffmpeg/ffmpeg_execution.dart';
-import 'package:flutter_ffmpeg/log.dart';
-import 'package:flutter_ffmpeg/media_information.dart';
-import 'package:flutter_ffmpeg/statistics.dart';
+import 'package:flutter_ffmpeg_fijkplayer/ffmpeg_execution.dart';
+import 'package:flutter_ffmpeg_fijkplayer/log.dart';
+import 'package:flutter_ffmpeg_fijkplayer/media_information.dart';
+import 'package:flutter_ffmpeg_fijkplayer/statistics.dart';
 
 typedef LogCallback = void Function(Log log);
 typedef StatisticsCallback = void Function(Statistics statistics);

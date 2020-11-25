@@ -20,23 +20,23 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_ffmpeg/log_level.dart';
-import 'package:flutter_ffmpeg_example/abstract.dart';
-import 'package:flutter_ffmpeg_example/audio_tab.dart';
-import 'package:flutter_ffmpeg_example/command_tab.dart';
-import 'package:flutter_ffmpeg_example/concurrent_execution_tab.dart';
-import 'package:flutter_ffmpeg_example/decoration.dart';
-import 'package:flutter_ffmpeg_example/flutter_ffmpeg_api_wrapper.dart';
-import 'package:flutter_ffmpeg_example/https_tab.dart';
-import 'package:flutter_ffmpeg_example/pipe_tab.dart';
-import 'package:flutter_ffmpeg_example/player.dart';
-import 'package:flutter_ffmpeg_example/progress_modal.dart';
-import 'package:flutter_ffmpeg_example/subtitle_tab.dart';
-import 'package:flutter_ffmpeg_example/test_api.dart';
-import 'package:flutter_ffmpeg_example/util.dart';
-import 'package:flutter_ffmpeg_example/vid_stab_tab.dart';
-import 'package:flutter_ffmpeg_example/video_tab.dart';
-import 'package:flutter_ffmpeg_example/video_util.dart';
+import 'package:flutter_ffmpeg_fijkplayer/log_level.dart';
+import 'package:flutter_ffmpeg_fijkplayer_example/abstract.dart';
+import 'package:flutter_ffmpeg_fijkplayer_example/audio_tab.dart';
+import 'package:flutter_ffmpeg_fijkplayer_example/command_tab.dart';
+import 'package:flutter_ffmpeg_fijkplayer_example/concurrent_execution_tab.dart';
+import 'package:flutter_ffmpeg_fijkplayer_example/decoration.dart';
+import 'package:flutter_ffmpeg_fijkplayer_example/flutter_ffmpeg_api_wrapper.dart';
+import 'package:flutter_ffmpeg_fijkplayer_example/https_tab.dart';
+import 'package:flutter_ffmpeg_fijkplayer_example/pipe_tab.dart';
+import 'package:flutter_ffmpeg_fijkplayer_example/player.dart';
+import 'package:flutter_ffmpeg_fijkplayer_example/progress_modal.dart';
+import 'package:flutter_ffmpeg_fijkplayer_example/subtitle_tab.dart';
+import 'package:flutter_ffmpeg_fijkplayer_example/test_api.dart';
+import 'package:flutter_ffmpeg_fijkplayer_example/util.dart';
+import 'package:flutter_ffmpeg_fijkplayer_example/vid_stab_tab.dart';
+import 'package:flutter_ffmpeg_fijkplayer_example/video_tab.dart';
+import 'package:flutter_ffmpeg_fijkplayer_example/video_util.dart';
 
 GlobalKey _globalKey = GlobalKey();
 

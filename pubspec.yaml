@@ -1,7 +1,7 @@
-name: flutter_ffmpeg
+name: flutter_ffmpeg_fijkplayer
 description: Flutter plugin to run FFmpeg on mobile platforms. Supports iOS and Android.
-version: 0.3.0
-homepage: https://github.com/tanersener/flutter-ffmpeg
+version: 0.0.1
+homepage: https://github.com/martytsaitw/flutter-ffmpeg-fijkplayer
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -10,6 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  fijkplayer: ^0.8.7
 
 dev_dependencies:
   path_provider: ^1.6.16

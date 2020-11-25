@@ -8,7 +8,7 @@ Demonstrates how to use the flutter_ffmpeg plugin.
 
     - Use execute() method with a single command line  
     ```
-    import 'package:flutter_ffmpeg/flutter_ffmpeg.dart';
+    import 'package:flutter_ffmpeg_fijkplayer/flutter_ffmpeg.dart';
 
     final FlutterFFmpeg _flutterFFmpeg = new FlutterFFmpeg();
 
@@ -18,7 +18,7 @@ Demonstrates how to use the flutter_ffmpeg plugin.
     - Use executeWithArguments() method with an array of arguments  
 
     ```
-    import 'package:flutter_ffmpeg/flutter_ffmpeg.dart';
+    import 'package:flutter_ffmpeg_fijkplayer/flutter_ffmpeg.dart';
 
     final FlutterFFmpeg _flutterFFmpeg = new FlutterFFmpeg();
 
@@ -37,7 +37,7 @@ Demonstrates how to use the flutter_ffmpeg plugin.
 
     - Use execute() method with a single command line  
     ```
-    import 'package:flutter_ffmpeg/flutter_ffmpeg.dart';
+    import 'package:flutter_ffmpeg_fijkplayer/flutter_ffmpeg.dart';
 
     final FlutterFFprobe _flutterFFprobe = new FlutterFFprobe();
 
@@ -47,7 +47,7 @@ Demonstrates how to use the flutter_ffmpeg plugin.
     - Use executeWithArguments() method with an array of arguments  
 
     ```
-    import 'package:flutter_ffmpeg/flutter_ffmpeg.dart';
+    import 'package:flutter_ffmpeg_fijkplayer/flutter_ffmpeg.dart';
 
     final FlutterFFprobe _flutterFFprobe = new FlutterFFprobe();
 

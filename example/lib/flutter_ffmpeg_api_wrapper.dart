@@ -19,10 +19,10 @@
 
 import 'dart:async';
 
-import 'package:flutter_ffmpeg/ffmpeg_execution.dart';
-import 'package:flutter_ffmpeg/flutter_ffmpeg.dart';
-import 'package:flutter_ffmpeg/media_information.dart';
-import 'package:flutter_ffmpeg/statistics.dart';
+import 'package:flutter_ffmpeg_fijkplayer/ffmpeg_execution.dart';
+import 'package:flutter_ffmpeg_fijkplayer/flutter_ffmpeg.dart';
+import 'package:flutter_ffmpeg_fijkplayer/media_information.dart';
+import 'package:flutter_ffmpeg_fijkplayer/statistics.dart';
 
 final FlutterFFmpegConfig _flutterFFmpegConfig = new FlutterFFmpegConfig();
 final FlutterFFmpeg _flutterFFmpeg = new FlutterFFmpeg();

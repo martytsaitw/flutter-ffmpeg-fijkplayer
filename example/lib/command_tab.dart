@@ -18,10 +18,10 @@
  */
 
 import 'package:flutter/material.dart';
-import 'package:flutter_ffmpeg/log.dart';
-import 'package:flutter_ffmpeg_example/abstract.dart';
-import 'package:flutter_ffmpeg_example/popup.dart';
-import 'package:flutter_ffmpeg_example/tooltip.dart';
+import 'package:flutter_ffmpeg_fijkplayer/log.dart';
+import 'package:flutter_ffmpeg_fijkplayer_example/abstract.dart';
+import 'package:flutter_ffmpeg_fijkplayer_example/popup.dart';
+import 'package:flutter_ffmpeg_fijkplayer_example/tooltip.dart';
 
 import 'flutter_ffmpeg_api_wrapper.dart';
 import 'util.dart';

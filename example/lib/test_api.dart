@@ -17,8 +17,8 @@
  * along with FlutterFFmpeg.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import 'package:flutter_ffmpeg/flutter_ffmpeg.dart';
-import 'package:flutter_ffmpeg/log_level.dart';
+import 'package:flutter_ffmpeg_fijkplayer/flutter_ffmpeg.dart';
+import 'package:flutter_ffmpeg_fijkplayer/log_level.dart';
 
 import 'flutter_ffmpeg_api_wrapper.dart';
 import 'util.dart';
